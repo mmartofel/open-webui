@@ -1,0 +1,11 @@
+# At the ConfigMap you can specify all static parameters you want be fixed at the initial webui start.
+# For references please check:
+# https://docs.openwebui.com/getting-started/env-configuration
+#
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webui-configmap
+data:
+  OLLAMA_BASE_URL: 'http://ollama-service:11434'

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-webui-service
+  namespace: open-webui
+  labels:
+    app: open-webui
+    app.kubernetes.io/component: open-webui
+    app.kubernetes.io/instance: open-webui
+spec:
+  type: ClusterIP  # For OpenShift set it to ClusterIP
+  selector:
+    app: open-webui
+  ports:
+    - name: 8080-tcp # Give a port the name for better resolvability
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  internalTrafficPolicy: Cluster
+  sessionAffinity: None
