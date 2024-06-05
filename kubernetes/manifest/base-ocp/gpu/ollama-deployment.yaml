@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: ollama
+  namespace: open-webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Exists
+      nodeSelector: 
+        type: gpu-node
+      containers:
+        - name: ollama
+          image: 'ollama/ollama:latest'
+          ports:
+            - name: 11434-tcp
+              containerPort: 11434
+              protocol: TCP
+          resources:
+            limits:
+              cpu: '0.5'
+              memory: 1Gi
+              nvidia.com/gpu: 1
+            requests:
+              cpu: '0.1'
+              memory: 1Gi
+            nvidia.com/gpu: 1
+          volumeMounts:
+            - name: ollama-pvc
+              mountPath: /root/.ollama
+      volumes:
+        - name: ollama-pvc
+          persistentVolumeClaim:
+            claimName: ollama-pvc                     
