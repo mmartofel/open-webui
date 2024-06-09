@@ -10,3 +10,6 @@ metadata:
   namespace: open-webui
 data:
   OLLAMA_BASE_URL: 'http://ollama-service:11434'
+  IMAGE_GENERATION_ENGINE: comfyui
+  COMFYUI_BASE_URL: 'http://comfyui:8188'
+  IMAGE_STEPS: '25'
