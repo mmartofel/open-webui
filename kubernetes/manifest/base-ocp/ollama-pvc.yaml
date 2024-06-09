@@ -6,7 +6,11 @@ metadata:
   name: ollama-pvc
   namespace: open-webui
 spec:
+  # accessModes: ["ReadWriteOnce","ReadWriteMany"]
   accessModes: ["ReadWriteOnce"]
+  # storageClassName: ocs-storagecluster-ceph-rbd
+  # storageClassName: gp3-csi
+  # volumeMode: Filesystem
   resources:
     requests:
       storage: 30Gi
