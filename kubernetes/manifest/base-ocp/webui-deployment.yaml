@@ -3,6 +3,12 @@ kind: Deployment
 metadata:
   name: open-webui
   namespace: open-webui
+  labels:
+    app: open-webui
+    app.kubernetes.io/component: open-webui
+    app.kubernetes.io/instance: open-webui
+    app.kubernetes.io/name: open-webui
+    app.kubernetes.io/part-of: llm_serving  
 spec:
   replicas: 1
   selector:
