@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: ollama
+  namespace: open-webui
+  labels:
+    app: open-webui
+    app.kubernetes.io/component: ollama
+    app.kubernetes.io/instance: ollama
+    app.kubernetes.io/name: ollama
+    app.kubernetes.io/part-of: llm_serving  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+        - name: ollama
+          image: 'ollama/ollama:latest'
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: 11434-tcp
+              containerPort: 11434
+              protocol: TCP
+          resources:
+            limits:
+              cpu: '4'
+              memory: 12Gi
+            requests:
+              cpu: '2'
+              memory: 10Gi
+          volumeMounts:
+            - name: ollama-pvc
+              mountPath: /root/.ollama
+      volumes:
+        - name: ollama-pvc
+          persistentVolumeClaim:
+            claimName: ollama-pvc                     
