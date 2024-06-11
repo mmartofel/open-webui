@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: chroma
+  namespace: open-webui
+  labels:
+    app: chroma
+    app.kubernetes.io/component: chroma
+    app.kubernetes.io/instance: chroma
+    app.kubernetes.io/name: chroma
+    app.kubernetes.io/part-of: llm_serving
+    app.openshift.io/runtime-version: latest
+spec:
+  ports:
+    - name: 8000-tcp
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP
+  selector:
+    app: chroma
+    deployment: chroma

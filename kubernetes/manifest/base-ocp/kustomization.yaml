@@ -1,0 +1,27 @@
+resources:
+# MAJOR: Open-WebUI deployment
+- open-webui/open-webui.yaml
+- open-webui/open-webui-anyuid-role-binding.yaml
+- open-webui/webui-configmap.yaml
+- open-webui/webui-deployment.yaml
+- open-webui/webui-service.yaml
+- open-webui/webui-pvc.yaml
+- open-webui/webui-route.yaml
+# MAJOR: ChromaDB deployment
+- chroma/chroma-service.yaml
+- chroma/chroma-deployment.yaml
+# MAJOR: Ollama deployment
+- ollama/ollama-service.yaml
+- ollama/ollama-pvc.yaml
+# If use ollama at the nodes equiped with GPU use the following line
+- ollama/gpu/ollama-deployment.yaml
+# If use ollama at the nodes not equiped with GPU use the following line
+# - ollama/cpu/ollama-deployment.yaml
+# MAJOR: ComfyUI deployment
+- comfyui/comfyui-pvc.yaml
+- comfyui/comfyui-route.yaml
+- comfyui/comfyui-service.yaml
+# If use ComfyUI at the nodes equiped with GPU use the following line
+- comfyui/gpu/comfyui-deployment.yaml
+# If use ComfyUI at the nodes equiped with GPU use the following line
+#- comfyui/cpu/comfyui-deployment.yaml

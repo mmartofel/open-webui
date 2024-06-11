@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    app.openshift.io/route-disabled: 'false'
+    deployment.kubernetes.io/revision: '1'
+    app.openshift.io/connects-to: '[{"apiVersion":"apps/v1","kind":"Deployment","name":"open-webui"}]'
+  name: comfyui
+  namespace: open-webui
+  labels:
+    app: comfyui
+    app.kubernetes.io/component: comfyui
+    app.kubernetes.io/instance: comfyui
+    app.kubernetes.io/name: comfyui
+    app.kubernetes.io/part-of: comfyui-app
+    app.openshift.io/runtime-namespace: open-webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comfyui
+  template:
+    metadata:
+      labels:
+        app: comfyui
+        deployment: comfyui
+    spec:
+      containers:
+        - name: comfyui
+          image: 'quay.io/mmartofe/comfyui:cpu'
+          ports:
+            - containerPort: 8188
+              protocol: TCP
+          resources: {}
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: comfyui-volume
+              mountPath: /home/mmartofe/ComfyUI/dupa
+      volumes:
+        - name: comfyui-volume
+          persistentVolumeClaim:
+            claimName: comfyui-pvc                     
