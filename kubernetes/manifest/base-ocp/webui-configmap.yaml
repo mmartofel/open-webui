@@ -10,6 +10,8 @@ metadata:
   namespace: open-webui
 data:
   OLLAMA_BASE_URL: 'http://ollama-service:11434'
-  IMAGE_GENERATION_ENGINE: comfyui
+  IMAGE_GENERATION_ENGINE: 'comfyui'
   COMFYUI_BASE_URL: 'http://comfyui:8188'
-  IMAGE_STEPS: '25'
+  IMAGE_STEPS: '15'
+  IMAGE_SIZE: '1024x768'
+  IMAGE_GENERATION_MODEL: 'albedobaseXL_v13.safetensors'
