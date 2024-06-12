@@ -9,6 +9,8 @@ resources:
 - open-webui/webui-route.yaml
 # MAJOR: ChromaDB deployment
 - chroma/chroma-service.yaml
+- chroma/chroma-configmap.yaml
+- chroma/chroma-pvc.yaml
 - chroma/chroma-deployment.yaml
 # MAJOR: Ollama deployment
 - ollama/ollama-service.yaml

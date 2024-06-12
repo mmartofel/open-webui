@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: chroma
-          image: 'chromadb/chroma:latest'
+          image: 'ghcr.io/chroma-core/chroma:latest'
           ports:
             - containerPort: 8000
               protocol: TCP
@@ -37,3 +37,13 @@ spec:
               cpu: '0.2'
               memory: '1Gi'
           imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: chroma-configmap
+          volumeMounts:
+            - name: chroma-volume
+              mountPath: '/chroma/chroma'
+      volumes:
+      - name: chroma-volume
+        persistentVolumeClaim:
+          claimName: chroma-pvc                    
