@@ -15,6 +15,7 @@ spec:
   port:
     targetPort: 8080-tcp
   wildcardPolicy: None
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+# Web socket sucks with https, testing with plain http
+#  tls:
+#    termination: edge
+#    insecureEdgeTerminationPolicy: Redirect

@@ -9,6 +9,7 @@ metadata:
   name: webui-configmap
   namespace: open-webui
 data:
+  WEBUI_SECRET_KEY: 't0p-s3cr3t'
   OLLAMA_BASE_URL: 'http://ollama-service:11434'
   ENABLE_IMAGE_GENERATION: 'True'
   IMAGE_GENERATION_ENGINE: 'comfyui'
