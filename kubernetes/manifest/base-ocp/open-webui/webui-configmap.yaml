@@ -22,4 +22,4 @@ data:
   PDF_EXTRACT_IMAGES: 'True'
   ENABLE_RAG_WEB_SEARCH: 'True'
   RAG_WEB_SEARCH_ENGINE: 'brave'
-
+  DEFAULT_MODELS: 'llama3:latest'
