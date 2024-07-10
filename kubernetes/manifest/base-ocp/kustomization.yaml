@@ -15,15 +15,11 @@ resources:
 # MAJOR: Ollama deployment
 - ollama/ollama-service.yaml
 - ollama/ollama-pvc.yaml
-# If use ollama at the nodes equiped with GPU use the following line
-- ollama/gpu/ollama-deployment.yaml
-# If use ollama at the nodes not equiped with GPU use the following line
-# - ollama/cpu/ollama-deployment.yaml
+# If use ollama at the nodes without GPU use the following line
+- ollama/cpu/ollama-deployment.yaml
 # MAJOR: ComfyUI deployment
 - comfyui/comfyui-pvc.yaml
 - comfyui/comfyui-route.yaml
 - comfyui/comfyui-service.yaml
-# If use ComfyUI at the nodes equiped with GPU use the following line
-- comfyui/gpu/comfyui-deployment.yaml
-# If use ComfyUI at the nodes equiped with GPU use the following line
-#- comfyui/cpu/comfyui-deployment.yaml
+# If use ComfyUI at the nodes without GPU use the following line
+- comfyui/cpu/comfyui-deployment.yaml
