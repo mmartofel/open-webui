@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: open-webui-application
+spec:
+  destination:
+    name: ''
+    namespace: open-webui
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kubernetes/manifest/base-ocp
+    repoURL: 'https://github.com/mmartofel/open-webui'
+    targetRevision: HEAD
+  project: default
